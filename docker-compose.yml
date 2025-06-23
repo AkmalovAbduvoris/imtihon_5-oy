@@ -27,7 +27,7 @@ services:
         image: nginx:alpine
         container_name: imtihon_final_nginx
         ports:
-            - "88:80"
+            - "8082:80"
         volumes:
             - .:/var/www
             - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -39,7 +39,7 @@ services:
         image: redis:alpine
         container_name: imtihon_final_redis
         ports:
-            - "6379:6379"
+            - "6389:6379"
         networks:
             - imtihon_final
 volumes:
