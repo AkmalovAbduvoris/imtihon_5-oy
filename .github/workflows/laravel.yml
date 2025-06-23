@@ -23,8 +23,12 @@ jobs:
 
       - name: 🚀 Deploy via SSH
         run: |
-          ssh root@185.191.141.44 << 'EOF'
-            cd /var/www/imtihon_5-oy/
+          ssh -v root@185.191.141.44 << 'EOF'
+            set -e  # Exit on any error
+            cd /var/www/imtihon_5-oy/ || { echo "Directory not found"; exit 1; }
+            git pull origin main || { echo "Git pull failed"; exit 1; }
+            # Check if container exists
+            docker ps | grep imtihon_final_app || { echo "Container not running"; exit 1; }
             git pull origin main
             docker exec imtihon_final_app composer install --no-interaction --prefer-dist --optimize-autoloader
             docker exec imtihon_final_app php artisan config:clear
