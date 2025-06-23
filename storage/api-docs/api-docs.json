@@ -1,0 +1,498 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Laravel API",
+        "description": "Laravel Swagger API documentation",
+        "contact": {
+            "email": "admin@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get all books",
+                "operationId": "61b0fdd35b8c14afc6e29eb90598649a",
+                "responses": {
+                    "200": {
+                        "description": "List of books"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Create a new book",
+                "operationId": "5df8eb3d652dcc56b60cd15be3cbbf85",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "example": "My Book"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Book created"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/books/{id}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Get a book by ID",
+                "operationId": "c5b00bf4246c67b18e3092bd3665ea29",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Single book"
+                    },
+                    "404": {
+                        "description": "Book not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Update a book",
+                "operationId": "3784164917f8ef14fad58d37b2f7de74",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "example": "Updated Title"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Book updated"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Delete a book",
+                "operationId": "0d28c2ad15a8fdbe85c2c95806b007f6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the book",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Book deleted successfully"
+                    },
+                    "500": {
+                        "description": "Delete failed"
+                    }
+                }
+            }
+        },
+        "/api/v1/services": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Get list of all services",
+                "operationId": "19339d2b804c5bbb3a7d51826c6a5e9c",
+                "responses": {
+                    "200": {
+                        "description": "List of services"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Create a new service",
+                "operationId": "b9fd7c793f65af72b2c4e91b4773220a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "description"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 255,
+                                        "example": "Tuyxona"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "maxLength": 1000,
+                                        "example": "To'y uchun joy bezatish xizmati"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Service created"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/services/{id}": {
+            "get": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Get a single service by ID",
+                "operationId": "5460efdf46e38dba4e94cc1c62ce15a5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service found"
+                    },
+                    "404": {
+                        "description": "Service not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Update an existing service",
+                "operationId": "ca0d914039198efb0d6a0a5242999a96",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Karnay-surnay"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Xashamli musiqa xizmati"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Service updated"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Services"
+                ],
+                "summary": "Delete a service",
+                "operationId": "284f2fc04534a4a5d77b970203f4e892",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Service ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Service deleted successfully"
+                    },
+                    "500": {
+                        "description": "Service could not be deleted"
+                    }
+                }
+            }
+        },
+        "/api/v1/venues": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "List all venues",
+                "operationId": "0e10b0eeb76785bdcbf5ca5ff6e65e11",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Create a new venue",
+                "operationId": "b69afb59cd25d13c744d39dda49284ad",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "location",
+                                    "capacity",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "To'yxona Alisher"
+                                    },
+                                    "location": {
+                                        "type": "string",
+                                        "example": "Toshkent, Yunusobod"
+                                    },
+                                    "capacity": {
+                                        "type": "integer",
+                                        "example": 250
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 15000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Venue created"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/api/v1/venues/{id}": {
+            "get": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Get venue by ID",
+                "operationId": "e9669b98d80434bef910bf59c8d2c4e0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Venue ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venue retrieved successfully"
+                    },
+                    "404": {
+                        "description": "Venue not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Update an existing venue",
+                "operationId": "26523793300786a9215e7591ed0ff0eb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Venue ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Yangi To'yxona"
+                                    },
+                                    "location": {
+                                        "type": "string",
+                                        "example": "Chilonzor, Tashkent"
+                                    },
+                                    "capacity": {
+                                        "type": "integer",
+                                        "example": 300
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float",
+                                        "example": 18000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Venue updated"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Venues"
+                ],
+                "summary": "Delete a venue",
+                "operationId": "dd324d643e570603e964ded90696dfac",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Venue ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Venue deleted successfully"
+                    },
+                    "500": {
+                        "description": "Venue could not be deleted"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Services",
+            "description": "Service resource endpoints"
+        },
+        {
+            "name": "Venues",
+            "description": "Endpoints for managing venues (to‘yxona, choyxona va hokazo joylar)"
+        },
+        {
+            "name": "Books",
+            "description": "Books"
+        }
+    ]
+}
